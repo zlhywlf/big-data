@@ -12,12 +12,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class Main {
 
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         BasicThreadFactory threadFactory = new BasicThreadFactory.Builder().namingPattern("schedule-pool-%d").daemon(true).build();
         ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1, threadFactory);
-        executorService.schedule(new LogCollector(),0, TimeUnit.SECONDS);
-
+        executorService.schedule(new LogCollector(), 0, TimeUnit.SECONDS);
+        Thread.sleep(10 * 1000);
     }
 
 }
