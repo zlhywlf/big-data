@@ -1,4 +1,4 @@
-package zlhywlf.data;
+package zlhywlf.data.upload;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -60,6 +60,7 @@ public class LogCollector implements Runnable {
 
             // hadoop上传
             Configuration configuration = new Configuration();
+            // 如果不配置就是在本地操作
             configuration.set("fs.defaultFS", "hdfs://localhost:9001");
             String hPath = prop.getProperty(Constant.HDFS_TARGET_FOLDER) + "_" + today;
             try (FileSystem fs = FileSystem.get(configuration)) {
