@@ -33,6 +33,8 @@ public class WordCountDriver {
             // reduce output
             job.setOutputKeyClass(Text.class);
             job.setOutputValueClass(IntWritable.class);
+            // 使用预聚合
+            job.setCombinerClass(WordCountCombiner.class);
             // input
             FileInputFormat.setInputPaths(job, new Path(inputPath));
             // output
