@@ -1,0 +1,2 @@
+hello hdfs hadoop mapreduce yarn hdfs hadoop
+mapreduce mapreduce yarn hello hello hello

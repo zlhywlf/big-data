@@ -35,6 +35,7 @@ public class WordCount extends JobBase {
 
         @Override
         protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+            System.out.printf("map### key=%s,value=%s\n", key, value);
             String[] words = value.toString().split(" ");
             for (String s : words) {
                 word.set(s);
@@ -50,6 +51,7 @@ public class WordCount extends JobBase {
         protected void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
             int sum = 0;
             for (IntWritable value : values) {
+                System.out.printf("reduce### key=%s,value=%s\n", key, value);
                 sum += value.get();
             }
             total.set(sum);
